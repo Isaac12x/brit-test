@@ -1,52 +1,25 @@
-# brit-test
+# Brit Test
 
-Tech test for Brit insurance
+This tech test is used to
 
-[![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
-[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+### Explanation
 
-## Settings
+I have choosen django as I could have choosen any other. Because I wanted the capability to do this well with email verification (as it should be when doing authentication) the easiest was to go through it using django.
 
-Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
+Otherwise, for the test only would have gone with cherrypy.
 
-## Basic Commands
+### FE
 
-### Setting Up Your Users
+For the frontend, given the simplicity of the app I chose to go with the basic templating instead of doing React (my usual go-to) but having to compile and have to serve the react app compressed, etc.
 
-- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+### Authentication
 
-- To create a **superuser account**, use this command:
+Cookiecutter sets up authentication out-of-the-box via django
 
-      $ python manage.py createsuperuser
+### "Shortcuts"
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+I have used cookiecutter with the django template from Daniel&Audrey Fieldroy to quickstart the project.
 
-### Type checks
+It adds all the configuration as the basis of the application and adds a few libraries off-the-bat so it's very easy to do all the basics (authentication, emailing, remote logging, etc.).
 
-Running type checks with mypy:
-
-    $ mypy brit_test
-
-### Test coverage
-
-To run the tests, check your test coverage, and generate an HTML coverage report:
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-#### Running tests with pytest
-
-    $ pytest
-
-### Live reloading and Sass CSS compilation
-
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
-
-## Deployment
-
-The following details how to deploy this application.
-
-### Heroku
-
-See detailed [cookiecutter-django Heroku documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html).
+- I haven't taken any more shortcuts.

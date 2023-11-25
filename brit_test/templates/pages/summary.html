@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table table-hover">
+<thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+{% for each item in items %}
+<tr class="table-active">
+    <td>{{ item.item }}</td>
+    <td>{{ item.price }}</td>
+</tr>
+{% endfor %}
+</tbody>
+<tfooter styele="border-top: 3px solid black;">
+    <tr>
+        <td>Total</td>
+        <td>{{ total }}</td>
+    </tr>
+</table>    
+{% endblock content %}

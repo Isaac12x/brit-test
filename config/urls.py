@@ -4,10 +4,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+# from brit_test.app.views import ProtectedHome
+
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
+    # path("", ProtectedHome.as_view(template_name="pages/home.html"), name="home"),
+    # path("summary/", SummaryView.as_view(template_name="pages/summary.html"), name="summary"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
