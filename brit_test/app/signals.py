@@ -1,0 +1,1 @@
+# recompute the total_count if cached_property is used

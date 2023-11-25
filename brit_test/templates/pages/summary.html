@@ -7,33 +7,35 @@
   <div class="mt-4">
     <h1 class="fs-1 font-monospace title">Summary</h1>
   </div>
-  
+
 <table class="table table-hover">
 <thead>
     <tr>
       <th scope="col">Item</th>
       <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
     </tr>
   </thead>
   <tbody>
     
-{% for each item in items %}
+{% if items %}
+{% for obj in items %}
 <tr class="table-active">
-    <td>{{ item.item }}</td>
-    <td>{{ item.price }}</td>
+    <td>{{ obj.item.name }}</td>
+<td>{{ obj.quantity }}</td>
+<td>{{ obj.item.price }}</td>
 </tr>
 {% endfor %}
+{% endif %}
 </tbody>
-<tfooter style="border-top: 3px solid black;">
+<tfoot style="border-top: 3px solid black;">
     <tr>
         <td>Total</td>
-        <td>{{ total }}</td>
+        <td></td>
+        <td>{{ total_amount }}</td>
     </tr>
+</tfoot>
 </table>    
-
-<div class="mt-2">
-<p class="fs-5 gray-400">No items to display</p>
-</div>
 {% endif %}
 </div>
 {% endblock content %}

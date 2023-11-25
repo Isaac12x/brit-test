@@ -6,6 +6,15 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart', related_name='cart_items', on_delete=models.CASCADE)
+    item = models.ForeignKey('Item', on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} of {self.item.name}"
+
+
 class Cart(models.Model):
     """ 
         !Disclaimer: 
@@ -13,20 +22,17 @@ class Cart(models.Model):
         The closest modelling of this is to have a Cart model that has a total_amount field
         computed from the items in the cart
     """
-    item = models.ForeignKey("Item", on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    quantity = models.IntegerField(default=1)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cart')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.item.name
+        return f"Summary for {self.user.username}"
 
     @property
     def total_amount(self):
-        return self.items.aggregate(
-            total=models.Sum(F('quantity') * F('price'), output_field=models.DecimalField())
+        return self.cart_items.aggregate(
+            total=models.Sum(F('quantity') * F('item__price'), output_field=models.DecimalField())
         )['total'] or 0
 
 
@@ -37,10 +43,7 @@ class Summary(models.Model):
         This is an alternative implementation of the Summary model.
         Where the total_amount is persistent and only updates when the items change.
     """
-    item = models.ForeignKey("Item", on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    quantity = models.IntegerField(default=1)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -49,5 +52,5 @@ class Summary(models.Model):
         return self.item.name
 
     def calculate_amount(self):
-        self.total_amount = self.quantity * self.item.price
+        self.total_amount = sum(each.quanity * each.price for each in self.cart_items)
         self.save()
