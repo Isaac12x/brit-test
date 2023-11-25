@@ -86,7 +86,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "brit_test.users",
-    # "brit_test.app",
+    "brit_test.app",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

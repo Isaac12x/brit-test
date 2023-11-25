@@ -1,39 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-{% if cart %}
 <div class="section">
   <div class="mt-4">
-    <h1 class="fs-1 font-monospace title">Summary</h1>
+    <h1 class="fs-1 font-monospace title">Items</h1>
   </div>
-  
+
+    
+<div class="row">
+  <div></div>
+  <div></div>
+  <div><a href="{% url 'app:summary' %}">Summary</a></div>
+</div>
+  {% if items %}
+
 <table class="table table-hover">
 <thead>
     <tr>
       <th scope="col">Item</th>
       <th scope="col">Price</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    
-{% for each item in items %}
+{% for item in items %}
 <tr class="table-active">
     <td>{{ item.item }}</td>
     <td>{{ item.price }}</td>
+    <td><a href="{% url 'app:add_to_summary' item.id %}">+</a></td>
 </tr>
 {% endfor %}
-</tbody>
-<tfooter style="border-top: 3px solid black;">
-    <tr>
-        <td>Total</td>
-        <td>{{ total }}</td>
-    </tr>
-</table>    
 
+</tbody>  
+</table>    
+{% else %}
 <div class="mt-2">
 <p class="fs-5 gray-400">No items to display</p>
 </div>
 {% endif %}
 </div>
 {% endblock content %}
+
+

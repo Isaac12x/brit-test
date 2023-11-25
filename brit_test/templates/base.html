@@ -68,7 +68,12 @@
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'app:items' %}">Items</a>
+            </li>
+                      <li class="nav-item">
+              <a class="nav-link" href="{% url 'app:summary' %}">Summary</a>
+            </li>
             {% if request.user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link"
