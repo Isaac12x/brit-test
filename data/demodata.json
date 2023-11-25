@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Apples",
+      "price": 5
+    },
+    {
+      "name": "Book",
+      "price": 100
+    },
+    {
+      "name": "Car",
+      "price": 20000
+    }
+  ]
+}
