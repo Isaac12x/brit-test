@@ -2,7 +2,7 @@
 
 This tech test demonstrates Python programming skills featuring a login screen, signup, an items page and a summary page.
 
-Here's an accompanying video of part of the tech test while I was reasoning about certain parts (pardon the quality! I'm not a streamer): ![techtestvid](https://vimeo.com/888434078/ac7bd05345)
+Here's an accompanying video of part of the tech test while I was reasoning about certain parts (pardon the quality! I'm not a streamer): [![techtestvid](https://i.vimeocdn.com/video/1759558131-6f119add17324fc3bba9c2454f5068d35e8a691551e22f11b08ca5b0a630b084-d?mw=80&q=85)](https://vimeo.com/888434078/ac7bd05345)
 
 ### Explanation
 
